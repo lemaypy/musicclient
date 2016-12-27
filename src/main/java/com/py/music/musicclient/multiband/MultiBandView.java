@@ -53,7 +53,7 @@ public class MultiBandView implements IMultiBandView{
     // Layout for the menu area. Wrap the menu in a Panel to allow
     // scrollbar.
     Panel menuContainer = new Panel("The Possible Places");
- //py   menuContainer.addStyleName("menucontainer");
+    menuContainer.addStyleName("menucontainer");
     menuContainer.addStyleName("light"); // No border
     menuContainer.setWidth("-1px"); // Undefined width
     menuContainer.setHeight("100%");
@@ -68,7 +68,7 @@ public class MultiBandView implements IMultiBandView{
 
     // A panel for the main view area on the right side
     Panel detailspanel = new Panel("Details");
- //py   detailspanel.addStyleName("detailspanel");
+    detailspanel.addStyleName("detailspanel");
     detailspanel.addStyleName("light"); // No borders
     detailspanel.setSizeFull();
     horlayout.addComponent(detailspanel);
