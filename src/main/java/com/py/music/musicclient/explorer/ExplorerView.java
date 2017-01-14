@@ -3,6 +3,7 @@ package com.py.music.musicclient.explorer;
 import java.io.Serializable;
 
 import com.vaadin.ui.Component;
+import com.vaadin.ui.Grid;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
@@ -15,7 +16,11 @@ public class ExplorerView implements Serializable {
   final private Panel content = new Panel();
   final private VerticalLayout contentLayout = new VerticalLayout();
   final private VerticalLayout root = new VerticalLayout();
+  private Grid grid;
 
+  public Grid getGrid() {
+    return grid;
+  }
   public ExplorerView() {
     this.buildLayout();
   }
@@ -31,15 +36,11 @@ public class ExplorerView implements Serializable {
   }
   
   private void buildHeader() {
-    final Label labelDashboard = new Label("Header");
-    labelDashboard.setStyleName("musicclient-label-1");
-  //  final Label labelBand = new Label("Press Tone");
-  //  labelBand.setSizeUndefined(); // Take minimum space
-
-    this.header.addComponent(labelDashboard);
-   // this.header.addComponent(labelBand);
+    final Label labelExplorer = new Label("Explorer");
+    labelExplorer.setStyleName("musicclient-label-1");
+    this.header.addComponent(labelExplorer);
     this.header.setWidth("100%");
-    this.header.setExpandRatio(labelDashboard, 1.0f); // Expand
+    this.header.setExpandRatio(labelExplorer, 1.0f); // Expand
     
     this.root.addComponent(this.header);
   }
@@ -47,32 +48,36 @@ public class ExplorerView implements Serializable {
     content.setSizeFull();
     contentLayout.setSizeUndefined(); // to ensure a scrollbar appears if the content won't fit otherwise
     contentLayout.setSizeFull();
-    contentLayout.addStyleName("backLightBlue");
+    //contentLayout.addStyleName("backLightBlue");
+    contentLayout.addStyleName("deepSkyBlue");
     content.setContent(contentLayout);
     
     HorizontalLayout hl = new HorizontalLayout();
     hl.setHeight("100%");
     hl.setWidth("100%"); 
-    Panel left = this.createListPanel();
-    left.setSizeFull();
-    left.addStyleName("backLightBlue");
-    left.setHeight("100%");
-    left.setWidth("100%");    
+    Component left = this.createListPanel();  
 
     Panel right = this.createToolPanel();
     right.setWidthUndefined();
     right.setHeight("100%");
+
     hl.addComponent(left);
     hl.addComponent(right);
     hl.setExpandRatio(left, 1.0f); // Expand
-   // final Label labelCenter = new Label("Liste");
-   // contentLayout.addComponent(labelCenter);
+
     contentLayout.addComponent(hl);
     
     root.addComponent(content);
   }
-  private Panel createListPanel() {
-    return new Panel();
+  private Component createListPanel() {
+    ExplorerGrid eg = new ExplorerGrid();
+    grid = eg.getGrid();
+    //Component grid = eg.getComponent();
+    grid.setSizeFull();
+    grid.addStyleName("backColorGrey");
+    grid.setHeight("100%");
+    grid.setWidth("100%");    
+    return grid;
   }
   private Panel createToolPanel() {
     return new Panel("tools");

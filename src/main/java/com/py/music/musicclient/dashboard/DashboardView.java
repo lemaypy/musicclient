@@ -2,6 +2,7 @@ package com.py.music.musicclient.dashboard;
 
 import java.io.Serializable;
 
+import com.py.music.musicclient.explorer.ExplorerView;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.HorizontalSplitPanel;
@@ -17,12 +18,18 @@ public class DashboardView implements Serializable {
   final private Panel content = new Panel();
   final private VerticalLayout footer = new VerticalLayout();
   final private VerticalLayout contentLayout = new VerticalLayout();
-  final private HorizontalSplitPanel hsplitSetlistView = new HorizontalSplitPanel();
+  final private HorizontalSplitPanel setlistContent= new HorizontalSplitPanel();
+  final private ExplorerView explorerView = new ExplorerView();
   
+  public ExplorerView getExplorerView() {
+    return explorerView;
+  }
+
+
   public DashboardView() {
     this.buildLayout();
-    this.setContent(this.buildSetlistContent());
     
+    this.setContent(this.buildSetlistContent());    
   }
 
   
@@ -75,44 +82,35 @@ public class DashboardView implements Serializable {
     root.addComponent(footer); 
   }
   private Component buildSetlistContent(){
-    HorizontalSplitPanel hsplit = this.hsplitSetlistView;
-  //  hsplit.addStyleName("backColorAzure");
-    //hsplit.setSizeFull();
-    hsplit.setSizeUndefined();
-    
-  //  hpanel.setContent(hsplit);
+    HorizontalSplitPanel hsplit = this.setlistContent;
     Panel leftPanel = new Panel();
+    Panel rightPanel = new Panel();   
+    
     leftPanel.addStyleName("backColorGrey");
-    leftPanel.setContent(new Label("Here's the left panel"));
-   // leftPanel.addComponent(new Label("Here's the left panel"));
-    hsplit.setFirstComponent(leftPanel);
+    leftPanel.setSizeUndefined();
+    leftPanel.setHeight("100%");
+    leftPanel.setWidth("100%");    
+    
+   // ExplorerView ex = new ExplorerView();
 
-    hsplit.setSecondComponent(new Label("Here's the right panel"));
+    //leftPanel.setContent(new Label("Here's the left panel")); 
+    //leftPanel.setContent(ex.getContent()); 
+    leftPanel.setContent(this.explorerView.getContent()); 
+    
+    rightPanel.addStyleName("backColorGrey");
+    rightPanel.setSizeUndefined();
+    rightPanel.setHeight("100%");
+    rightPanel.setWidth("100%");
+    rightPanel.setContent(new Label("Here's the right panel"));
+    
+    hsplit.setSizeUndefined();
+    hsplit.setHeight("100%");
+    hsplit.setWidth("100%");
+    hsplit.setFirstComponent(leftPanel);
+    hsplit.setSecondComponent(rightPanel);
     hsplit.setVisible(true);
-    hsplit.setWidth("10px");
-  //  this.root.addComponent(hsplit);
-    //hsplit.setSizeFull();
-   // hpanel.setSpacing(true);
-   // root.setExpandRatio(hsplit, 1);
+
     return hsplit;
   }
-  /*
-  VerticalLayout mainLayout = new VerticalLayout();
-  mainLayout.setSizeFull(); // to ensure whole space is in use
-  mainWindow.setContent(mainLayout);
-  setMainWindow(mainWindow);
 
-  VerticalLayout header = new VerticalLayout();
-  Panel content = new Panel();
-  content.setSizeFull(); // to ensure the panel only takes the available space
-  VerticalLayout footer = new VerticalLayout();
-
-  mainLayout.addComponent(header);
-  mainLayout.addComponent(content);
-  mainLayout.addComponent(footer);
-  mainLayout.setExpandRatio(content, 1); // to determine which component takes the excess space
-
-  VerticalLayout contentLayout = new VerticalLayout();
-  contentLayout.setSizeUndefined(); // to ensure a scrollbar appears if the content won't fit otherwise
-  content.addComponent(contentLayout);*/
 }
