@@ -19,7 +19,7 @@
 // Affects the visual appearance of all components
 //$v-gradient: v-linear 8%;
 //$v-bevel-depth: 30%;
-//$v-shadow-opacity: 5%;
+//$v-shad    font-size: 28px;ow-opacity: 5%;
 
 // Defines colors for indicating status (focus, success, failure)
 //$v-focus-color: valo-focus-color(); // Calculates a suitable color automatically
@@ -40,4 +40,23 @@
     //font-weight: 500;
     font-weight: bold;
   }
+  .musicclient-split {
+    background-color:yellow;
+  }
+  .backColorGrey{
+           background-color:#ACACAC;
+  }
+  .backColorAzure{
+           background-color:#F0FFFF;
+  }
+  .backLightBlue{
+           background-color:#ADD8E6;
+  }
+  .backLightCyan{
+           background-color:PaleVioletRed;
+  } 
+  .deepSkyBlue{
+           background-color:DeepSkyBlue;
+  }
+
 }
