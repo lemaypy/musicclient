@@ -1,7 +1,7 @@
 package com.py.music.musicclient.explorer;
 
 import com.py.music.musicclient.MusicClientModel;
-import com.py.music.musicclient.MusicClientModel.Song;
+import com.py.music.musicclient.Song;
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.ui.Grid;
 

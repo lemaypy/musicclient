@@ -3,11 +3,14 @@ package com.py.music.musicclient;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.py.music.musicclient.service.MusicService;
+
 public class MusicClientModel {
   private Object[][] planets;
   private List<Song> songs = new ArrayList<Song>();
 
   public List<Song> getSongs() {
+    songs  = MusicService.getAllSongs();
     return songs;
   }
 
@@ -26,10 +29,7 @@ public class MusicClientModel {
     songs.add(new Song("Black Sabbath","War Pigs"));
     songs.add(new Song("David Bowie","Starman"));
   }
-
-  public Object[][] getPlanets() {
-    return planets;
-  }
+/*
 
   public class Song {
     private String artist = "";
@@ -55,5 +55,5 @@ public class MusicClientModel {
     public void setTitle(String title) {
       this.title = title;
     }
-  }
+  }*/
 }
