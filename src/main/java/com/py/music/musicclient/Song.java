@@ -1,6 +1,9 @@
 package com.py.music.musicclient;
 
-public class Song {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Song implements Serializable{
   private String artist = "";
   private String title  = "";
   
@@ -16,7 +19,7 @@ public class Song {
   public void setArtist(String artist) {
     this.artist = artist;
   }
-
+//test
   public String getTitle() {
     return title;
   }
